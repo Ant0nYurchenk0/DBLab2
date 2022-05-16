@@ -1,0 +1,1 @@
+﻿select Name from Seasons where Seasons.Id in(select SeasonId from Menus where Menus.Id in (select Menu_Id from MenuDishes where Dish_Id in (select Id from Dishes where Dishes.Name = 'Banana Cocktail')))

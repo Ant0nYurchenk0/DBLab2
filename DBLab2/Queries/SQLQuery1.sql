@@ -1,0 +1,1 @@
+﻿select Name from Ingredients where Ingredients.Id in ( select Ingredient_Id	from IngredientDishes where Dish_Id in ( select Dish_Id from MenuDishes	where Menu_Id in (	select Id from Menus where Name = 'Sweet Meels'	)))

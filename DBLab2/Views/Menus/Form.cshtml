@@ -1,0 +1,42 @@
+﻿@model DBLab2.ViewModels.MenuViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if (Model.Menu == null || Model.Menu.Id == 0)
+{
+
+    <h2>New Menu</h2>
+}
+else
+{
+    <h2>Edit Menu</h2>
+}
+@Html.ValidationSummary()
+
+@using (Html.BeginForm("Save", "Menus"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Menu.Name)
+        @Html.TextBoxFor(m => m.Menu.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Menu.Name)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Menu.Description)
+        @Html.TextBoxFor(m => m.Menu.Description, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Menu.Description)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Menu.SeasonId)
+        @Html.DropDownListFor(m => m.Menu.SeasonId,
+            new SelectList(Model.Seasons,
+            "Id",
+            "Name"),
+            "Select Season",
+            new { @class = "form-control " })
+        @Html.ValidationMessageFor(m => m.Menu.SeasonId)
+    </div>
+    @Html.HiddenFor(m => m.Menu.Id)
+    @Html.AntiForgeryToken();
+    <button type="submit" class="btn btn-success">Save</button>
+    <a class="btn btn-primary" href="@Url.Action("Index", "Menus")">Cancel</a>
+}

@@ -1,0 +1,1 @@
+﻿select * from Orders where Orders.Id in (select Order_Id from OrderDishes where Dish_Id in (select Id from Dishes where Dishes.Name ='strawberry tart' ))

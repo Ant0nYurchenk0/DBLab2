@@ -1,0 +1,108 @@
+﻿@using DBLab2.Queries
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Queries</h2>
+<h3>Simple Parametrized Queries</h3>
+<table class="table">
+    <thead>
+
+        <tr>
+            <th>#</th>
+            <th>Query</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>@QueryConstants.Query1Text</td>
+            <td>
+                <a class="btn btn-info" href="@Url.Action("Query1", "Query")">
+                    Run
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>@QueryConstants.Query2Text</td>
+            <td>
+                <a class="btn btn-info" href="@Url.Action("Query2", "Query")">
+                    Run
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td>@QueryConstants.Query3Text</td>
+            <td>
+                <a class="btn btn-info" href="@Url.Action("Query3", "Query")">
+                    Run
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">4</th>
+            <td>@QueryConstants.Query4Text</td>
+            <td>
+                <a class="btn btn-info" href="@Url.Action("Query4", "Query")">
+                    Run
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">5</th>
+            <td>@QueryConstants.Query5Text</td>
+            <td>
+                <a class="btn btn-info" href="@Url.Action("Query5", "Query")">
+                    Run
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h3>Parametrized Queries with Set Comparison</h3>
+<table class="table">
+    <thead>
+
+        <tr>
+            <th>#</th>
+            <th>Query</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>@QueryConstants.Query6Text</td>
+            <td>
+                <a class="btn btn-info" href="@Url.Action("Query6", "Query")">
+                    Run
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>@QueryConstants.Query7Text</td>
+            <td>
+                <a class="btn btn-info" href="@Url.Action("Query7", "Query")">
+                    Run
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td>@QueryConstants.Query8Text</td>
+            <td>
+                <a class="btn btn-info" href="@Url.Action("Query8", "Query")">
+                    Run
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<a class="btn btn-primary" href="@Url.Action("Index", "Home")">
+    To main menu
+</a>

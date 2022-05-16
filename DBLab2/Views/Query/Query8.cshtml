@@ -1,0 +1,23 @@
+﻿@model DBLab2.Queries.ViewModels.Query8ViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Query</h2>
+@using (Html.BeginForm("Result8", "Query"))
+{
+    @Html.LabelFor(q => q.SeasonId)
+    @Html.DropDownListFor(q => q.SeasonId,
+         new MultiSelectList(Model.Seasons,
+         "Id",
+         "Name"),
+         "Select Season",
+         new { @class = "form-control " })
+    <p></p>
+    @Html.ValidationMessageFor(q => q.SeasonId)
+    @Html.AntiForgeryToken();
+    <button type="submit" class="btn btn-success">Submit</button>
+    <a class="btn btn-primary" href="@Url.Action("Index", "Query")">
+        Cancel
+    </a>
+}

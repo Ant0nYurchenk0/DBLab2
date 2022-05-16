@@ -1,0 +1,44 @@
+﻿@model List<DBLab2.Models.Order>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Orders</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Date & Time Ordered</th>
+            <th scope="col">Description</th>
+            <th scope="col">Dishes</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var order in Model)
+        {
+            <tr>
+                <th scope="row">@order.Id</th>
+                <td>@order.DateOrdered</td>
+                <td>@order.Description</td>
+                <td>@string.Join(", ", order.Dishes.Select(d => d.Name).ToList())</td>
+                <td>
+                    <a class="btn btn-warning" href="@Url.Action("Edit", "Orders", new { id = order.Id})">
+                        Edit
+                    </a>
+                    <a class="btn btn-danger" href="@Url.Action("Delete", "Orders", new { id = order.Id})">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a class="btn btn-success" href="@Url.Action("Create", "Orders")">
+    Add new order
+</a>
+<a class="btn btn-primary" href="@Url.Action("Index", "Home")">
+    To main menu
+</a>

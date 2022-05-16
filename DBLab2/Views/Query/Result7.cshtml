@@ -1,0 +1,31 @@
+﻿@model List<DBLab2.Queries.ViewModels.Result7ViewModel>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Query</h2>
+<table class=" table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Id</th>
+            <th>Date Ordered</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    @for (var i = 1; i <= Model.Count; i++)
+    {
+        <tr>
+            <th scope="row">@i</th>
+            <td>@Model[i - 1].Id</td>
+            <td>@Model[i - 1].DateOrdered</td>
+            <td>@Model[i - 1].Description</td>
+        </tr>
+    }
+</table>
+<a class="btn btn-primary" href="@Url.Action("Index", "Home")">
+    To main menu
+</a>
+<a class="btn btn-primary" href="@Url.Action("Index", "Query")">
+    To queries
+</a>

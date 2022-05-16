@@ -1,0 +1,48 @@
+﻿@model DBLab2.ViewModels.DishViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if (Model == null || Model.Dish.Id == 0)
+{
+
+    <h2>New Dish</h2>
+}
+else
+{
+    <h2>Edit Dish</h2>
+}
+@Html.ValidationSummary()
+
+@using (Html.BeginForm("Save", "Dishes"))
+{
+    <div class="form-group">
+        @Html.LabelFor(d => d.Dish.Name)
+        @Html.TextBoxFor(d => d.Dish.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(d => d.Dish.Name)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(d => d.Dish.Description)
+        @Html.TextBoxFor(d => d.Dish.Description, new { @class = "form-control" })
+        @Html.ValidationMessageFor(d => d.Dish.Description)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(d => d.Dish.Price)
+        @Html.TextBoxFor(d => d.Dish.Price, new { @class = "form-control" })
+        @Html.ValidationMessageFor(d => d.Dish.Price)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(d => d.Dish.Menus)
+        @Html.DropDownListFor(d => d.MenuIds,
+         new MultiSelectList(Model.Menus,
+         "Id",
+         "Name"),
+         "Select Menus",
+         new { @class = "form-control ", multiple="multiple" })
+        @Html.ValidationMessageFor(d => d.MenuIds)
+    </div>
+
+    @Html.HiddenFor(d => d.Dish.Id)
+    @Html.AntiForgeryToken();
+    <button type="submit" class="btn btn-success">Save</button>
+    <a class="btn btn-primary" href="@Url.Action("Index", "Dishes")">Cancel</a>
+}

@@ -1,0 +1,23 @@
+﻿@model DBLab2.Queries.ViewModels.Query3ViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Query</h2>
+@using (Html.BeginForm("Result3", "Query"))
+{
+    @Html.LabelFor(q => q.DishName)
+    @Html.DropDownListFor(q => q.DishName,
+         new MultiSelectList(Model.Dishes,
+         "Name",
+         "Name"),
+         "Select Dish",
+         new { @class = "form-control " })
+    <p></p>
+    @Html.ValidationMessageFor(q => q.DishName)
+    @Html.AntiForgeryToken();
+    <button type="submit" class="btn btn-success">Submit</button>
+    <a class="btn btn-primary" href="@Url.Action("Index", "Query")">
+        Cancel
+    </a>
+}

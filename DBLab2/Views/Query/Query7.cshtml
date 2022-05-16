@@ -1,0 +1,23 @@
+﻿@model DBLab2.Queries.ViewModels.Query7ViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Query</h2>
+@using (Html.BeginForm("Result7", "Query"))
+{
+    @Html.LabelFor(q => q.OrderId)
+    @Html.DropDownListFor(q => q.OrderId,
+         new MultiSelectList(Model.Orders,
+         "Id",
+         "Id"),
+         "Select Order Id",
+         new { @class = "form-control " })
+    <p></p>
+    @Html.ValidationMessageFor(q => q.OrderId)
+    @Html.AntiForgeryToken();
+    <button type="submit" class="btn btn-success">Submit</button>
+    <a class="btn btn-primary" href="@Url.Action("Index", "Query")">
+        Cancel
+    </a>
+}

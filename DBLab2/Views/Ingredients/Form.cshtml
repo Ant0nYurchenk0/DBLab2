@@ -1,0 +1,43 @@
+﻿@model DBLab2.ViewModels.IngredientViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if (Model == null || Model.Ingredient.Id == 0)
+{
+
+    <h2>New Ingredient</h2>
+}
+else
+{
+<h2>Edit Ingredient</h2>
+}
+@Html.ValidationSummary()
+
+@using (Html.BeginForm("Save", "Ingredients"))
+{
+    <div class="form-group">
+        @Html.LabelFor(d => d.Ingredient.Name)
+        @Html.TextBoxFor(d => d.Ingredient.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(d => d.Ingredient.Name)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(d => d.Ingredient.Description)
+        @Html.TextBoxFor(d => d.Ingredient.Description, new { @class = "form-control" })
+        @Html.ValidationMessageFor(d => d.Ingredient.Description)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(d => d.Ingredient.Dishes)
+        @Html.DropDownListFor(d => d.DishIds,
+         new MultiSelectList(Model.Dishes,
+         "Id",
+         "Name"),
+         "Select Dishes",
+         new { @class = "form-control ", multiple = "multiple" })
+        @Html.ValidationMessageFor(d => d.DishIds)
+    </div>
+
+    @Html.HiddenFor(d => d.Ingredient.Id)
+    @Html.AntiForgeryToken();
+    <button type="submit" class="btn btn-success">Save</button>
+    <a class="btn btn-primary" href="@Url.Action("Index", "Ingredients")">Cancel</a>
+}

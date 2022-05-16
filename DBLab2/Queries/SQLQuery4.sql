@@ -1,0 +1,1 @@
+﻿select Name from Menus where SeasonId in (select Id from Seasons where Seasons.Name = 'summer 2022')

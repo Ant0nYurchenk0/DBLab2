@@ -1,0 +1,52 @@
+﻿@model List<DBLab2.Models.Menu>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Menus</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Season</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var menu in Model)
+        {
+            <tr>
+                <th scope="row">@menu.Id</th>
+                <td>@menu.Name</td>
+                <td>@menu.Description</td>
+                @if(menu.Season == null)
+                {
+                    <td>No assigned season</td>
+                }
+                else
+                {
+                    <td>@menu.Season.Name </td>
+                }
+                <td>
+
+                    <a class="btn btn-warning" href="@Url.Action("Edit", "Menus", new { id = menu.Id})">
+                        Edit
+                    </a>
+                    <a class="btn btn-danger" href="@Url.Action("Delete", "Menus", new { id = menu.Id})">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a class="btn btn-success" href="@Url.Action("Create", "Menus")">
+    Add new menu
+</a>
+<a class="btn btn-primary" href="@Url.Action("Index", "Home")">
+    To main menu
+</a>

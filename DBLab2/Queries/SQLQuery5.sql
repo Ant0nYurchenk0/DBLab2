@@ -1,0 +1,1 @@
+﻿select Name from Dishes where Id in (select dish_id from IngredientDishes where Ingredient_Id in (select Id from Ingredients where Name = 'Strawberry'))

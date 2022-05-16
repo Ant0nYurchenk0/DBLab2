@@ -1,0 +1,46 @@
+﻿@model List<DBLab2.Models.Dish>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Dishes</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Description</th>
+            <th scope="col">Menus</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var dish in Model)
+        {
+            <tr>
+                <th scope="row">@dish.Id</th>
+                <td>@dish.Name</td>
+                <td>@dish.Price</td>
+                <td>@dish.Description</td>
+                <td>@string.Join(", ", dish.Menus.Select(m=>m.Name).ToList())</td>
+                <td>
+                    <a class="btn btn-warning" href="@Url.Action("Edit", "Dishes", new { id = dish.Id})">
+                        Edit
+                    </a>
+                    <a class="btn btn-danger" href="@Url.Action("Delete", "Dishes", new { id = dish.Id})">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a class="btn btn-success" href="@Url.Action("Create", "Dishes")">
+    Add new dish
+</a>
+<a class="btn btn-primary" href="@Url.Action("Index", "Home")">
+    To main menu
+</a>

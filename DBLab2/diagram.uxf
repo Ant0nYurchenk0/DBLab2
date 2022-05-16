@@ -1,0 +1,44 @@
+<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>40</x><y>310</y><w>140</w><h>110</h></coordinates><panel_attributes>Order
+--
+string Name
+int Id
+string Description</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>460</x><y>300</y><w>140</w><h>110</h></coordinates><panel_attributes>Dish
+--
+string Name
+int Id
+string Description
+int Price</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>460</x><y>610</y><w>140</w><h>110</h></coordinates><panel_attributes>Menu
+--
+string Name
+int Id
+string Description</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>460</x><y>0</y><w>140</w><h>110</h></coordinates><panel_attributes>Ingredient
+--
+string Name
+int Id
+string Description
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>40</x><y>610</y><w>140</w><h>110</h></coordinates><panel_attributes>Season
+--
+string Name
+int Id
+DateTime StartDate
+DateTime EndDate</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLSpecialState</id><coordinates><x>210</x><y>310</y><w>220</w><h>110</h></coordinates><panel_attributes>type=decision
+OrderedDish
+----------------------
+int OrderId
+int DishId
+int Id</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLSpecialState</id><coordinates><x>420</x><y>450</y><w>220</w><h>110</h></coordinates><panel_attributes>type=decision
+MenuDish
+----------------------
+int MenuId
+int DishId
+int Id</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLSpecialState</id><coordinates><x>210</x><y>610</y><w>220</w><h>110</h></coordinates><panel_attributes>type=decision
+SeasonMenu
+----------------------
+int MenuId
+int SeasonId
+int Id</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLSpecialState</id><coordinates><x>420</x><y>150</y><w>220</w><h>110</h></coordinates><panel_attributes>type=decision
+DishIngredient
+----------------------
+int IngredientId
+int DishId
+int Id</panel_attributes><additional_attributes></additional_attributes></element></diagram>
